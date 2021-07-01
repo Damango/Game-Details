@@ -1,0 +1,24 @@
+.games-list-container {
+	position: relative;
+
+	width: 100%;
+	height: 500px;
+	margin-top: 50px;
+}
+
+.games-list-header {
+	position: relative;
+	width: 100%;
+	padding-bottom: 30px;
+
+	border-bottom: 1px solid gray;
+	margin-bottom: 15px;
+}
+
+.games-list-type {
+	display: inline-block;
+}
+
+.game-cards-container {
+	position: relative;
+}
