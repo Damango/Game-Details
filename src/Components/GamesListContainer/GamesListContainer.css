@@ -3,16 +3,20 @@
 
 	width: 100%;
 	height: 500px;
-	margin-top: 50px;
+	margin-top: 40px;
+	margin-bottom: 80px;
 }
 
 .games-list-header {
 	position: relative;
 	width: 100%;
 	padding-bottom: 30px;
+	color: white;
+	font-family: "Montserrat";
+	font-weight: 600;
+	font-size: 30px;
 
-	border-bottom: 1px solid gray;
-	margin-bottom: 15px;
+	border-bottom: 1px solid white;
 }
 
 .games-list-type {

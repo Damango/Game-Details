@@ -18,7 +18,7 @@ const GameCard = (props) => {
 
 
     return ( <div className="game-card-container" ref={cardRef} onClick={makeCardBig}>
-        <div className="game-image center-x" style={{backgroundImage:`url(${props.data.cardImage})` }}></div>
+         <div className="game-image center-x" style={{backgroundImage:`url(${props.data.cardImage})` }}></div>
         <div className="game-title-container">{props.data.title}</div>
         <div className="bussiness-model"><div className="model-line center-y"></div> {props.data.bussinessModel}</div>
         <div className="game-tags-container">

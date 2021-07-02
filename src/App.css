@@ -1,9 +1,10 @@
 body {
+	background-color: #222f3e;
 }
 
 .game-details-container {
 	position: relative;
-
+	background-color: #222f3e;
 	width: 100%;
 	height: 1000px;
 
@@ -13,6 +14,7 @@ body {
 .game-details-wrapper {
 	position: relative;
 	width: 98%;
+	background-color: #222f3e;
 	height: 100%;
 }
 
