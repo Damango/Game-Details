@@ -6,26 +6,45 @@
 	width: 300px;
 	margin-top: 20px;
 	margin-right: 50px;
-	box-shadow: 0px 0px 5px 1px black;
+
 	border-radius: 3px;
 	transition: 0.2s;
 	color: white;
-	background-color: #2f3640;
+	background-color: 202020;
 }
 
 .game-card-container:hover {
 	cursor: pointer;
-	top: -15px;
 }
 
-.game-card-container:hover .game-image {
+.game-card-container:hover .anim-rect {
+	height: 100%;
+	top: 0px !important;
+}
+
+.game-card-container:hover .anim-rect2 {
+	height: 100%;
+	top: 0px !important;
+	transition-delay: 0.1s;
+}
+
+.game-card-container:hover .anim-rect3 {
+	width: 100%;
+	right: 0px !important;
+	transition-delay: 0.15s;
+}
+
+.game-card-container:hover .anim-rect4 {
+	width: 100%;
+	right: 0px !important;
+	transition-delay: 0.19s;
 }
 
 .game-image {
 	position: relative;
 	background-color: black;
 	width: 100%;
-	height: 270px;
+	height: 375px;
 	transition: 0.2s;
 	background-position: center;
 	background-size: cover;
@@ -35,7 +54,7 @@
 	margin-top: 20px;
 	font-weight: bold;
 	font-size: 25px;
-	font-family: "Ubuntu";
+	font-family: "Poppins";
 	color: white;
 }
 
@@ -67,4 +86,75 @@
 	padding: 5px 10px;
 	font-family: "Open Sans";
 	border-radius: 5px;
+}
+
+.moving-rects-container {
+	background-color: transparent;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+.anim-rect {
+	background-color: white;
+	width: 2px;
+	height: 60px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+
+	transition: 0.3s;
+}
+
+.anim-rect2 {
+	background-color: white;
+	width: 2px;
+	height: 60px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	transition: 0.3s;
+}
+.anim-rect3 {
+	background-color: white;
+	width: 60px;
+	height: 2px;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 0px;
+	transition: 0.3s;
+}
+.anim-rect4 {
+	background-color: white;
+	width: 60px;
+	height: 2px;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 0px;
+	transition: 0.3s;
+}
+
+@keyframes movingRect1 {
+	from {
+		height: 60px;
+	}
+	to {
+		top: 90%;
+		height: 100px;
+	}
+}
+
+@keyframes movingRect2 {
+	from {
+		top: 0px;
+		height: 60px;
+	}
+	to {
+		top: 80%;
+		height: 130px;
+	}
 }
