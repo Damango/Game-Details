@@ -23,10 +23,10 @@ const GameCard = (props) => {
 
             
         </div>
-        <div className="anim-rect" ></div>
-        <div className="anim-rect2" ></div>
-        <div className="anim-rect3"  ></div>
-        <div className="anim-rect4" ></div>
+        <div className="anim-rect"></div>
+        <div className="anim-rect2"></div>
+        <div className="anim-rect3"></div>
+        <div className="anim-rect4"></div>
       
          <div className="game-image center-x" style={{backgroundImage:`url(${props.data.cardImage})` }}></div>
         <div className="game-title-container">{props.data.title.toUpperCase()}</div>

@@ -12,12 +12,14 @@ function App() {
         {title: "Valorant",
           bussinessModel: "Free to Play",
           tags: ["Shooter", "Multiplayer"],
-          cardImage: valorantImage
+          cardImage: valorantImage,
+          developer: "Riot Games"
         },
         {title: "Apex Legends",
           bussinessModel: "Free to Play",
           tags: ["Shooter", "Multiplayer"],
-          cardImage: apexImage
+          cardImage: apexImage,
+          developer: "Respawn Entertainment"
         }, {title: "Halo Infinite",
         bussinessModel: "Free to Play",
         tags: ["Shooter", "Multiplayer"],
@@ -57,14 +59,24 @@ function App() {
         }
     }
 
+    function lockScroll(){
+      if(detailView !== false){
+        return ({
+          height: '100vh',
+          width: '100vw',
+          overflow:'hidden'
+      })
+      }
+    }
+
 
   return (
-    <div className="App">
+    <div className="App" style={ lockScroll()}>
 
       {renderDetailView()}
 
-      <div className="game-details-container">
-        <div className="game-details-wrapper center-all">
+      <div className="game-details-container" >
+        <div className="game-details-wrapper center-all" >
           <GamesListContainer data={gamesList.fps} type={"FPS Games"} setDetailView={setDetailView}/>
           <GamesListContainer data={gamesList.mmo} type={"MMORPG"} setDetailView={setDetailView} />
 
