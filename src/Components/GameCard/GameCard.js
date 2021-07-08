@@ -5,49 +5,28 @@ import "./GameCard.css"
 const GameCard = (props) => {
 
 
-    const cardRef = useRef()
-    const rectRef = useRef()
+   
 
-    let movingRects = [];
-    for(let i = 0; i < 4; i++){
-        movingRects.push(Math.floor(Math.random() * 300))
-    }
-    useEffect(() => {
-        
-        for(let i = 0; i < 4; i++){
-            movingRects.push(Math.floor(Math.random() * 300))
-        }
-    }, [])
+   
 
-    function makeCardBig(){
-        cardRef.current.style.position = 'absolute';
-        cardRef.current.style.width = '100%'
-        cardRef.current.style.height = '100%'
-    }
-
-
-    function moveRect(){
-
- 
-
-    }
+    
 
  
     
 
 
 
-    return ( <div className="game-card-container" ref={cardRef} >
+    return ( <div className="game-card-container"  onClick={() => {props.setDetailView(props.data)}}>
         
         <div className="moving-rects-container">
             
 
             
         </div>
-        <div className="anim-rect" style={{top: movingRects[0]}} ref={rectRef}></div>
-        <div className="anim-rect2" style={{top: movingRects[1]}} ref={rectRef}></div>
-        <div className="anim-rect3"  ref={rectRef}></div>
-        <div className="anim-rect4" ref={rectRef}></div>
+        <div className="anim-rect" ></div>
+        <div className="anim-rect2" ></div>
+        <div className="anim-rect3"  ></div>
+        <div className="anim-rect4" ></div>
       
          <div className="game-image center-x" style={{backgroundImage:`url(${props.data.cardImage})` }}></div>
         <div className="game-title-container">{props.data.title.toUpperCase()}</div>

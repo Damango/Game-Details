@@ -3,18 +3,20 @@
 	padding: 20px;
 	top: 0px;
 	display: inline-block;
-	width: 300px;
+	min-width: 300px;
 	margin-top: 20px;
 	margin-right: 50px;
 
 	border-radius: 3px;
-	transition: 0.2s;
+	transition: 0.3s;
 	color: white;
-	background-color: 202020;
+	background-color: #202020;
 }
 
 .game-card-container:hover {
 	cursor: pointer;
+	min-width: 350px;
+	background-color: #353535;
 }
 
 .game-card-container:hover .anim-rect {
@@ -24,7 +26,7 @@
 
 .game-card-container:hover .anim-rect2 {
 	height: 100%;
-	top: 0px !important;
+	bottom: 0px !important;
 	transition-delay: 0.1s;
 }
 
@@ -80,8 +82,9 @@
 }
 
 .game-tag {
-	background-color: #ec331e;
-	color: white;
+	background-color: white;
+	color: #2f3640;
+	font-weight: 600;
 	margin-right: 10px;
 	padding: 5px 10px;
 	font-family: "Open Sans";
@@ -114,26 +117,25 @@
 	height: 60px;
 	position: absolute;
 	right: 0px;
-	top: 0px;
+	bottom: 0px;
 	transition: 0.3s;
 }
 .anim-rect3 {
 	background-color: white;
-	width: 60px;
+	width: 40px;
 	height: 2px;
 	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
+	right: 0px;
 	bottom: 0px;
 	transition: 0.3s;
 }
 .anim-rect4 {
 	background-color: white;
-	width: 60px;
+	width: 50px;
 	height: 2px;
 	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
+	left: 0px;
+
 	top: 0px;
 	transition: 0.3s;
 }

@@ -13,7 +13,7 @@ const GamesListContainer = (props) => {
         </div>
 
         <div className="game-cards-container">
-            {props.data.map((game) => <GameCard data={game}/>)}
+            {props.data.map((game) => <GameCard data={game} setDetailView={props.setDetailView}/>)}
         </div>
 
 

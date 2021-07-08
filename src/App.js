@@ -1,4 +1,5 @@
-
+import {useState} from 'react'
+import DetailView from "./Components/DetailView/DetailView"
 import './App.css';
 import GamesListContainer from "./Components/GamesListContainer/GamesListContainer"
 import apexImage from "./media/apeximage.jpg"
@@ -25,7 +26,15 @@ function App() {
       {title: "Apex Legends",
         bussinessModel: "Free to Play",
         tags: ["Shooter", "Multiplayer"]
-      }
+      },
+      {title: "Apex Legends",
+      bussinessModel: "Free to Play",
+      tags: ["Shooter", "Multiplayer"]
+    },
+    {title: "Apex Legends",
+    bussinessModel: "Free to Play",
+    tags: ["Shooter", "Multiplayer"]
+  }
       ],
       mmo: [
         {title: "World of Warcraft",
@@ -40,13 +49,24 @@ function App() {
     }
 
 
+    const [detailView, setDetailView] = useState(false);
+
+    function renderDetailView(){
+        if(detailView !== false){
+          return(<DetailView detailViewData={detailView} setDetailView={setDetailView}/> )
+        }
+    }
+
+
   return (
     <div className="App">
 
+      {renderDetailView()}
+
       <div className="game-details-container">
         <div className="game-details-wrapper center-all">
-          <GamesListContainer data={gamesList.fps} type={"FPS Games"}/>
-          <GamesListContainer data={gamesList.mmo} type={"MMORPG"}/>
+          <GamesListContainer data={gamesList.fps} type={"FPS Games"} setDetailView={setDetailView}/>
+          <GamesListContainer data={gamesList.mmo} type={"MMORPG"} setDetailView={setDetailView} />
 
         </div>
       </div>

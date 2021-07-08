@@ -33,3 +33,23 @@ body {
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+
+::-webkit-scrollbar {
+	width: 10px;
+	height: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: black;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #95a5a6;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
