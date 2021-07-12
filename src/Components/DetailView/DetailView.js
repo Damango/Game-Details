@@ -1,48 +1,75 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { useSpring, animated } from 'react-spring'
 import "./DetailView.css"
+import DetailViewSelector from '../DetailViewSelector/DetailViewSelector';
 
 const DetailView = (props) => {
-    return ( <div className="detail-view-container">
+
+
+
+    //States
+
+    const [textViewState, setTextViewState] = useState('Overview')
+    const [textViewData, setTextViewData] = useState(props.detailViewData.detailSections.overview)
+
+
+
+
+    //Animation Styles for the detail view
+    const detailContainer = useSpring({from: {opacity: 0}, to: {opacity: 1}})
+    const imageBox = useSpring({from: {width: '0%'}, to: {width: '100%'}, delay: 200})
+    const detailTitle = useSpring({from:{top: -100, opacity: 0}, to:{top: 0, opacity: 1},delay: 400})
+    const detailDeveloper = useSpring({from: {left: -100, opacity: 0}, to:{left: 0, opacity: 1},delay: 600})
+    const detailButtons = useSpring({from: {opacity: 0}, to: {opacity: 1}, delay: 800})
+    const detailSelector = useSpring({from: { opacity: 0}, to: { opacity: 1}, delay: 1000})
+    const detailSelectorBorder = useSpring({from: {width: '0%'}, to: {width: '100%'}, delay: 1000}) 
+    const textChunk = useSpring({from: {opacity: 0}, to: {opacity: 1}, delay: 1200})
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    return ( <animated.div style={detailContainer} className="detail-view-container">
        
-        <div className="detail-view-image">
+        <animated.div style={imageBox} className="detail-view-image">
             <div className="detail-view-image-overlay">
                 <div className="next-image-box"></div>
             </div>
 
         
-        </div>
+        </animated.div>
         <div className="detail-view-main-body">
             <div className="detail-view-main-body-wrapper center-all">
             <button className="close-detail-view-button" onClick={() => {props.setDetailView(false)}}>CLOSE</button>
-            <div className="detail-view-title">{props.detailViewData.title.toUpperCase()}</div>
-            <div className="detail-view-developer">Developed By: <span style={{borderBottom: '2px solid #e74c3c', color: "rgb(29, 29, 29)", fontWeight: 'bold', fontSize: '30px', fontFamily:"Raleway"}}>{props.detailViewData.developer}</span></div>
-            <div className="detail-view-buttons">
-                <button className="detail-view-button">Visit Website</button>
+            <animated.div style={detailTitle} className="detail-view-title">{props.detailViewData.title.toUpperCase()}</animated.div>
+            <animated.div style={detailDeveloper} className="detail-view-developer">Developed By: <span style={{borderBottom: '2px solid #e74c3c', color: "rgb(29, 29, 29)", fontWeight: 'bold', fontSize: '30px', fontFamily:"Raleway"}}>{props.detailViewData.developer}</span></animated.div>
+            <animated.div style={detailButtons} className="detail-view-buttons">
+                <button className="detail-view-button" onClick={() => {console.log(props)}}>Visit Website</button>
                 <button className="detail-view-button">View on Steam</button>
-            </div>
-            <div className="detail-view-navigator">
-                <div className="detail-view-nav-selector">Overview</div>
-                <div className="detail-view-nav-selector">Esports</div>
-                <div className="detail-view-nav-selector">News</div>
-            </div>
-            <div className="detail-view-body">
-                <div className="detail-view-text-chunk">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nisi massa, eleifend sit amet odio eu, fringilla varius lorem. Sed mauris orci, pretium rutrum mi at, vehicula condimentum odio. Praesent quis elit non enim condimentum accumsan vel id odio. Vestibulum sodales urna vitae metus ornare pharetra. Etiam vitae euismod turpis. Proin a sapien metus. Mauris lacus tortor, egestas sit amet leo vel, tincidunt rhoncus sapien. Praesent turpis mi, porta at augue eget, vulputate efficitur eros. Donec congue nunc a urna faucibus, et convallis ante sagittis. Vivamus lobortis purus ante, eget pulvinar lorem aliquam at.
+            </animated.div>
+            <div  className="detail-view-navigator">
+                <DetailViewSelector text='Overview' textView={textViewState} setTextViewData={setTextViewData} setTextViewState={setTextViewState} detailViewData={props.detailViewData.detailSections.overview}/>
+                <DetailViewSelector text='Esports'  textView={textViewState} setTextViewData={setTextViewData} setTextViewState={setTextViewState} detailViewData={props.detailViewData.detailSections.esports}/>
+                <DetailViewSelector text='News'   textView={textViewState} setTextViewData={setTextViewData} setTextViewState={setTextViewState} detailViewData={props.detailViewData.detailSections.news}/>
+              
 
-                </div>
-                <div className="detail-view-text-chunk">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nisi massa, eleifend sit amet odio eu, fringilla varius lorem. Sed mauris orci, pretium rutrum mi at, vehicula condimentum odio. Praesent quis elit non enim condimentum accumsan vel id odio. Vestibulum sodales urna vitae metus ornare pharetra. Etiam vitae euismod turpis. Proin a sapien metus. Mauris lacus tortor, egestas sit amet leo vel, tincidunt rhoncus sapien. Praesent turpis mi, porta at augue eget, vulputate efficitur eros. Donec congue nunc a urna faucibus, et convallis ante sagittis. Vivamus lobortis purus ante, eget pulvinar lorem aliquam at.
-
-                </div>
-                <div className="detail-view-text-chunk">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nisi massa, eleifend sit amet odio eu, fringilla varius lorem. Sed mauris orci, pretium rutrum mi at, vehicula condimentum odio. Praesent quis elit non enim condimentum accumsan vel id odio. Vestibulum sodales urna vitae metus ornare pharetra. Etiam vitae euismod turpis. Proin a sapien metus. Mauris lacus tortor, egestas sit amet leo vel, tincidunt rhoncus sapien. Praesent turpis mi, porta at augue eget, vulputate efficitur eros. Donec congue nunc a urna faucibus, et convallis ante sagittis. Vivamus lobortis purus ante, eget pulvinar lorem aliquam at.
-
-                </div>
+                <animated.div style={detailSelectorBorder} className="navigator-border-bottom"></animated.div>
             </div>
+            <animated.div style={textChunk} className="detail-view-body">
+
+                
+                {textViewData.map((text) => <div  className="detail-view-text-chunk">{text}</div>)}
+            </animated.div>
             </div>
            
         </div>
-    </div> );
+    </animated.div> );
 }
  
 export default DetailView;

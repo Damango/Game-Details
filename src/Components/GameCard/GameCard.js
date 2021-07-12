@@ -1,4 +1,5 @@
 import React, {useRef, useEffect} from 'react';
+import { useSpring, animated } from 'react-spring'
 import "./GameCard.css"
 
 
@@ -7,22 +8,18 @@ const GameCard = (props) => {
 
    
 
-   
+    const styles = useSpring({ from:{top: -200, opacity: 0}, to:{top: 0, opacity: 1} ,  delay: (props.index * 100) + 100, config:{tension: 0,    }})
 
     
 
- 
+    console.log(styles)
     
 
 
 
-    return ( <div className="game-card-container"  onClick={() => {props.setDetailView(props.data)}}>
+    return ( <animated.div className="game-card-container" style={styles}  onClick={() => {props.setDetailView(props.data)}}>
         
-        <div className="moving-rects-container">
-            
-
-            
-        </div>
+     
         <div className="anim-rect"></div>
         <div className="anim-rect2"></div>
         <div className="anim-rect3"></div>
@@ -30,12 +27,12 @@ const GameCard = (props) => {
       
          <div className="game-image center-x" style={{backgroundImage:`url(${props.data.cardImage})` }}></div>
         <div className="game-title-container">{props.data.title.toUpperCase()}</div>
-        <div className="b ussiness-model"><div className="model-line center-y"></div> {props.data.bussinessModel}</div>
+        <div className="bussiness-model"><div className="model-line center-y"></div> {props.data.bussinessModel}</div>
         <div className="game-tags-container">
             {props.data.tags.map((tag) => <div className="game-tag">{tag}</div>)}
         </div>
         
-    </div> );
+    </animated.div> );
  
 }
  
