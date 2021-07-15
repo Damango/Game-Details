@@ -9,9 +9,13 @@ const DetailView = (props) => {
 
     //States
 
+    // Text Body State
     const [textViewState, setTextViewState] = useState('Overview')
     const [textViewData, setTextViewData] = useState(props.detailViewData.detailSections.overview)
 
+
+    // Image State
+    const [imageState, setImageState] = useState()
 
 
 
@@ -20,14 +24,14 @@ const DetailView = (props) => {
     const imageBox = useSpring({from: {width: '0%'}, to: {width: '100%'}, delay: 200})
     const detailTitle = useSpring({from:{top: -100, opacity: 0}, to:{top: 0, opacity: 1},delay: 400})
     const detailDeveloper = useSpring({from: {left: -100, opacity: 0}, to:{left: 0, opacity: 1},delay: 600})
-    const detailButtons = useSpring({from: {opacity: 0}, to: {opacity: 1}, delay: 800})
+    const detailButtons = useSpring({from: {opacity: 0}, to: {opacity: 1}, delay: 800 })
     const detailSelector = useSpring({from: { opacity: 0}, to: { opacity: 1}, delay: 1000})
     const detailSelectorBorder = useSpring({from: {width: '0%'}, to: {width: '100%'}, delay: 1000}) 
     const textChunk = useSpring({from: {opacity: 0}, to: {opacity: 1}, delay: 1200})
     
 
     
-    
+    let detailImage = {backgroundImage:`url(${props.detailViewData.images[0]})`}
     
     
     
@@ -37,9 +41,9 @@ const DetailView = (props) => {
     
     return ( <animated.div style={detailContainer} className="detail-view-container">
        
-        <animated.div style={imageBox} className="detail-view-image">
+        <animated.div style={{...imageBox, ...detailImage}} className="detail-view-image">
             <div className="detail-view-image-overlay">
-                <div className="next-image-box"></div>
+                <div className="next-image-box" style={{backgroundImage:`url(${props.detailViewData.images[2]})`}}></div>
             </div>
 
         
