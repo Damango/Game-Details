@@ -15,7 +15,7 @@ const DetailView = (props) => {
 
 
     // Image State
-    const [imageState, setImageState] = useState()
+    const [imageState, setImageState] = useState({backgroundImage:`url(${props.detailViewData.images[0]})`})
 
 
 
@@ -33,6 +33,12 @@ const DetailView = (props) => {
     
     let detailImage = {backgroundImage:`url(${props.detailViewData.images[0]})`}
     
+
+    function changeImage(){
+        setTimeout(() => {
+            setImageState({backgroundImage:`url(${props.detailViewData.images[2]})`})
+        }, 1000)
+    }
     
     
     
@@ -40,10 +46,11 @@ const DetailView = (props) => {
     
     
     return ( <animated.div style={detailContainer} className="detail-view-container">
-       
-        <animated.div style={{...imageBox, ...detailImage}} className="detail-view-image">
+       {changeImage()}
+        <animated.div style={{...imageBox, ...imageState}} className="detail-view-image">
             <div className="detail-view-image-overlay">
-                <div className="next-image-box" style={{backgroundImage:`url(${props.detailViewData.images[2]})`}}></div>
+                <div className="timer-bar"></div>
+                <div className="next-image-box" style={{backgroundImage:`url(${props.detailViewData.images[1]})`}}></div>
             </div>
 
         
