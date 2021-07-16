@@ -15,8 +15,8 @@ const DetailView = (props) => {
 
 
     // Image State
-    const [imageState, setImageState] = useState({backgroundImage:`url(${props.detailViewData.images[0]})`})
-
+    const [imageIndex, setImageIndex] = useState(0)
+   
 
 
     //Animation Styles for the detail view
@@ -31,13 +31,48 @@ const DetailView = (props) => {
     
 
     
-    let detailImage = {backgroundImage:`url(${props.detailViewData.images[0]})`}
+    let detailImage = {backgroundImage:`url(${props.detailViewData.images[imageIndex]})`}
     
 
     function changeImage(){
         setTimeout(() => {
-            setImageState({backgroundImage:`url(${props.detailViewData.images[2]})`})
+            setImageIndex(imageIndex + 1)
         }, 1000)
+    }
+    
+
+    function handleImageChange(){
+
+       
+       
+
+        setTimeout(() => {
+            if((imageIndex + 1) > (props.detailViewData.images.length - 1)){
+                setImageIndex(0)
+            }
+            else{{setImageIndex(imageIndex + 1)}}
+            console.log(imageIndex)
+        }, 5000)
+
+    }
+
+    function handNextImage(){
+
+       if( props.detailViewData.images[imageIndex + 1] === undefined){
+      
+            return(0)
+
+       }
+
+       else{
+        console.log(props.detailViewData.images[3])
+           return(imageIndex + 1)
+
+       }
+
+       
+
+     
     }
     
     
@@ -46,11 +81,11 @@ const DetailView = (props) => {
     
     
     return ( <animated.div style={detailContainer} className="detail-view-container">
-       {changeImage()}
-        <animated.div style={{...imageBox, ...imageState}} className="detail-view-image">
+       {handleImageChange()}
+        <animated.div style={{...imageBox, ...{backgroundImage:`url(${props.detailViewData.images[imageIndex]})`}}} className="detail-view-image">
             <div className="detail-view-image-overlay">
                 <div className="timer-bar"></div>
-                <div className="next-image-box" style={{backgroundImage:`url(${props.detailViewData.images[1]})`}}></div>
+                <div className="next-image-box" style={{backgroundImage:`url(${props.detailViewData.images[handNextImage()]})`}}></div>
             </div>
 
         
