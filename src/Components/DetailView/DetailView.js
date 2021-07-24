@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useSpring, animated } from 'react-spring'
 import "./DetailView.css"
 import DetailViewSelector from '../DetailViewSelector/DetailViewSelector';
-
+import ESportsCard from "../ESportsCard/ESportsCard"
 const DetailView = (props) => {
 
 
@@ -16,6 +16,10 @@ const DetailView = (props) => {
 
     // Image State
     const [imageIndex, setImageIndex] = useState(0)
+
+
+    //State Value for Image Slider
+    const [imageTimer, setImageTimer] = useState('nextImageTimer')
    
 
 
@@ -28,60 +32,53 @@ const DetailView = (props) => {
     const detailSelector = useSpring({from: { opacity: 0}, to: { opacity: 1}, delay: 1000})
     const detailSelectorBorder = useSpring({from: {width: '0%'}, to: {width: '100%'}, delay: 1000}) 
     const textChunk = useSpring({from: {opacity: 0}, to: {opacity: 1}, delay: 1200})
-    
+
+
 
     
-    let detailImage = {backgroundImage:`url(${props.detailViewData.images[imageIndex]})`}
-    
-
-    function changeImage(){
-        setTimeout(() => {
-            setImageIndex(imageIndex + 1)
-        }, 1000)
-    }
     
 
     function handleImageChange(){
-
-       
-       
-
         setTimeout(() => {
             if((imageIndex + 1) > (props.detailViewData.images.length - 1)){
                 setImageIndex(0)
             }
             else{{setImageIndex(imageIndex + 1)}}
-            console.log(imageIndex)
+            document.querySelector('.timer-bar').style.animationName = 'none'
+          setTimeout(() => {
+            document.querySelector('.timer-bar').style.animationName = 'nextImageTimer'
+          }, 1)
+           
         }, 5000)
-
     }
 
     function handNextImage(){
-
        if( props.detailViewData.images[imageIndex + 1] === undefined){
-      
             return(0)
-
        }
-
        else{
-        console.log(props.detailViewData.images[3])
            return(imageIndex + 1)
 
        }
+    }
 
-       
-
-     
+    function handleDetailChange(){
+        if(textViewState === 'Overview'){
+           return(textViewData.map((text) => <div  className="detail-view-text-chunk">{text}</div>))
+           
+        }
+        else if(textViewState === 'Esports'){
+           return(textViewData.map((card) => <ESportsCard data={card}/>))
+        }
     }
     
     
-    
+    {handleImageChange()}
     
     
     
     return ( <animated.div style={detailContainer} className="detail-view-container">
-       {handleImageChange()}
+   
         <animated.div style={{...imageBox, ...{backgroundImage:`url(${props.detailViewData.images[imageIndex]})`}}} className="detail-view-image">
             <div className="detail-view-image-overlay">
                 <div className="timer-bar"></div>
@@ -109,8 +106,8 @@ const DetailView = (props) => {
             </div>
             <animated.div style={textChunk} className="detail-view-body">
 
-                
-                {textViewData.map((text) => <div  className="detail-view-text-chunk">{text}</div>)}
+                {handleDetailChange()}
+             
             </animated.div>
             </div>
            
